@@ -31,7 +31,7 @@ namespace AdminToolAPI
 
             services.AddControllers();
 
-                        // for authentication
+            // for authentication
             services.AddAuthentication(o =>
             {
                 o.DefaultScheme = "scheme";
@@ -39,8 +39,8 @@ namespace AdminToolAPI
             .AddScheme<AuthenticationSchemeOptions, CustomAuthenticationHandler>(
                 "scheme", o => { });
 
+            // "loggedin"  for signed in if needed
             var permissions = new[] {
-                // "loggedin", // for signed in
                 "manage:forums", // for moderator (is signed in)
                 "manage:awebsite", // for admin (is moderator and signed in)
             };
