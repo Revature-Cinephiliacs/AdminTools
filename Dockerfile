@@ -4,7 +4,7 @@ WORKDIR /src
 
 # copy everything and restore as distinct layers
 COPY . .
-WORKDIR "/src/AdminToolsAPI"
+WORKDIR "/src/AdminToolAPI"
 RUN dotnet build "AdminToolAPI.csproj" -c Release -o /app/build
 
 # publish app
