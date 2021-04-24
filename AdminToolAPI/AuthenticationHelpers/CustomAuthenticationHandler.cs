@@ -47,11 +47,7 @@ namespace AdminToolAPI.Helpers
             {
                 claims.Add(new Claim(per, "true"));
             });
-            // context.User.Claims.Append();
-            // var identity = new ClaimsIdentity(claims, "basic");
-            // User = new ClaimsPrincipal(identity);
 
-            // var claims = new[] { new Claim("token", token) };
             var identity = new ClaimsIdentity(claims, nameof(CustomAuthenticationHandler));
             var ticket = new AuthenticationTicket(new ClaimsPrincipal(identity), this.Scheme.Name);
             return AuthenticateResult.Success(ticket);
