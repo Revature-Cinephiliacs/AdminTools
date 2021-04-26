@@ -28,7 +28,7 @@ namespace AdminToolAPI.Controllers
         /// <returns></returns>
         [HttpGet("AdminTools")]
         [Authorize]
-        public async Task<ActionResult<string>> GetExample()
+        public ActionResult<string> GetExample()
         {
             return Ok(new { response = "success" });
         }
