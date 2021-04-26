@@ -13,6 +13,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication;
 using AdminToolAPI.Helpers;
+using Microsoft.EntityFrameworkCore;
+using Repository.Models;
 
 namespace AdminToolAPI
 {
@@ -29,6 +31,15 @@ namespace AdminToolAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
+
+             
+            var myConnString = Configuration.GetConnectionString("Cinephiliacs_Admin");
+            services.AddDbContext<Cinephiliacs_AdminContext>(options =>
+            {
+                options.UseSqlServer(myConnString);
+            });
+            
+            
             services.AddControllers();
 
             // services.AddScoped<ReportingLogic>();
