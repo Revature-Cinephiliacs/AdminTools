@@ -15,12 +15,6 @@ namespace AdminToolAPI.Controllers
     [Route("[controller]")]
     public class AdminToolsController : ControllerBase
     {
-        private readonly ITicketsRepo iTicketsRepo;
-
-        AdminToolsController()
-        {
-            iTicketsRepo = new TicketsRepo(new Cinephiliacs_AdminContext());
-        }
 
         /// <summary>
         /// Example for using authentication
