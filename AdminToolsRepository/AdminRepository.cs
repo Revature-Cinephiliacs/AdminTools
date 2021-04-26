@@ -1,0 +1,7 @@
+namespace AdminToolsRepository
+{
+    class AdminRepository
+    {
+
+    }
+}
