@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: revaturecinephiliacsadmintools 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: revaturecinephiliacsadmintools
+  template:
+    metadata:
+      labels:
+        app: revaturecinephiliacsadmintools 
+    spec:
+      containers:
+        - name: revaturecinephiliacsadmintools 
+          image: 03012021batchp3acr.azurecr.io/revaturecinephiliacsadmintools
+          ports:
+          - containerPort: 80
