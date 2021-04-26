@@ -12,4 +12,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AdminToolsModels\AdminToolsModels.csproj" />
+  </ItemGroup>
+
 </Project>

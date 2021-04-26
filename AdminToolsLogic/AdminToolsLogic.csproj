@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\AdminToolsRepository\AdminToolsRepository.csproj" />
     <ProjectReference Include="..\AdminToolsModels\AdminToolsModels.csproj" />
+    <ProjectReference Include="..\Repository\Repository.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

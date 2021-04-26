@@ -15,6 +15,9 @@ using Microsoft.AspNetCore.Authentication;
 using AdminToolAPI.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Repository.Models;
+using AdminToolsLogic.Logic;
+using AdminToolsLogic.LogicHelper;
+using Repository;
 
 namespace AdminToolAPI
 {
@@ -32,17 +35,19 @@ namespace AdminToolAPI
         {
 
 
-             
+
             var myConnString = Configuration.GetConnectionString("Cinephiliacs_Admin");
             services.AddDbContext<Cinephiliacs_AdminContext>(options =>
             {
                 options.UseSqlServer(myConnString);
             });
-            
-            
+
+
             services.AddControllers();
 
-            // services.AddScoped<ReportingLogic>();
+            services.AddScoped<AdminRepository>();
+            services.AddScoped<ReportingLogic>();
+            services.AddScoped<Mapper>();
             // services.AddScoped<>();
 
             // for authentication

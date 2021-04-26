@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AdminToolsLogic.Logic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -12,16 +13,26 @@ namespace AdminToolAPI.Controllers
     [Route("[controller]")]
     public class ReportsController : ControllerBase
     {
+        private readonly ReportingLogic _reportLogic;
+
+        ReportsController(ReportingLogic _reportLogic)
+        {
+            this._reportLogic = _reportLogic;
+        }
+
         /// <summary>
-        /// Get Reported User
+        /// Create a ticket for a Reported Entity
         /// </summary>
         /// <returns></returns>
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<string>> GenerateReportTicket([FromBody] dynamic Model)
+        public async Task<ActionResult<string>> GenerateReportTicket([FromBody] dynamic model)
         {
-
-            return Ok(new { response = "success" });
+            if (_reportLogic.CreateReportTicket(model))
+            {
+                return Ok(new { response = "success" });
+            }
+            return new StatusCodeResult(400);
         }
     }
 }
