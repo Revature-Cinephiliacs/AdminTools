@@ -38,22 +38,22 @@ namespace Repository.Repositories
         /// Pass in context using Dependency Injection
         /// and assign to context variable
         /// </summary>
-        public ResolvedTicketsRepo(TicketsContext ticketContext) 
+        public ResolvedTicketsRepo(Cinephiliacs_AdminContext _context) 
         {
-          //  context = eventFunctionsContext;
+            context = _context;
         }
 
         public ResolvedTicket InsertResolvedTicket(ResolvedTicket resolvedTicket) 
         {
             context.Add<ResolvedTicket>(resolvedTicket);
             Save();
-            var getBackResolvedTicket = context.ResolvedTickets.FirstOrDefault(n => Id.Equals(resolvedTicket.Id, n.Id));
+            var getBackResolvedTicket = context.ResolvedTickets.FirstOrDefault(n => TicketId.Equals(resolvedTicket.TicketId, n.TicketId));
             return getBackResolvedTicket;
         }
 
         public List<ResolvedTicket> GetAllResolvedTickets() 
         {
-//            return context.Tickets.ToList();
+            return context.Tickets.ToList();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Repository.Repositories
 
         public void DeleteResolvedTicket(ResolvedTicket resolvedTicketId)
         {
-            ResolvedTicket resolvedTicket = context.ResolvedTickets.Find(resolvedTicketId);
+            ResolvedTicket resolvedTicket = context.ResolvedTickets.Find(TicketId);
             context.Entry(resolvedTicket).State = EntityState.Deleted;
             context.ResolvedTickets.Remove(resolvedTicket);
         }

@@ -38,9 +38,9 @@ namespace Repository.Repositories
         /// Pass in context using Dependency Injection
         /// and assign to context variable
         /// </summary>
-        public TicketsRepo(TicketsContext ticketsContext) 
+        public TicketsRepo(Cinephiliacs_AdminContext ticketsContext) 
         {
-          //  context = ticketsContext;
+            context = ticketsContext;
         }
 
         public Ticket InsertTicket(Ticket ticket) 
@@ -53,7 +53,7 @@ namespace Repository.Repositories
 
         public List<Ticket> GetAllTickets() 
         {
-//            return context.Tickets.ToList();
+            return context.Tickets.ToList();
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Repository.Repositories
 
         public User GetTicketByID(Ticket ticketId)
         {
-            var ticket = context.Tickets.Include(x => x.Tickets).FirstOrDefault(n => Id.Equals(n.Id, ticketId));
+            var ticket = context.Tickets.Include(x => x.Tickets).FirstOrDefault(n => TicketId.Equals(n.Id, ticketId));
             return ticket;
         }
 
