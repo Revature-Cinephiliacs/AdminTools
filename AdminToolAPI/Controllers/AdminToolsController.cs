@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AdminToolsLogic.Logic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Repository.Interfaces;
+using Repository;
 using Repository.Models;
-using Repository.Repositories;
 
 namespace AdminToolAPI.Controllers
 {
@@ -15,11 +15,13 @@ namespace AdminToolAPI.Controllers
     [Route("[controller]")]
     public class AdminToolsController : ControllerBase
     {
-        private readonly ITicketsRepo iTicketsRepo;
+        private readonly ReportingLogic _logic;
 
-        AdminToolsController()
+        // private readonly ITicketsRepo iTicketsRepo;
+
+        AdminToolsController(ReportingLogic _logic)
         {
-            iTicketsRepo = new TicketsRepo(new Cinephiliacs_AdminContext());
+            this._logic = _logic;
         }
 
         /// <summary>
