@@ -25,7 +25,6 @@ namespace AdminToolAPI.Helpers
         protected async override Task<AuthenticateResult> HandleAuthenticateAsync()
         {
             var headers = Request.Headers;
-            // var token = headers["Authorization"];
             var token = Helper.GetTokenFromRequest(Request);
 
             if (string.IsNullOrEmpty(token))
