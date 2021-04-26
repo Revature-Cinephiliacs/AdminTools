@@ -6,7 +6,7 @@ using Repository.Contexts;
 using Repository.Interfaces;
 using Repository.Models;
 
-namespace AdminToolsRepository.Repositories
+namespace Repository.Repositories
 {
     /// <summary>
     /// This is the Repo class for Tickets
@@ -16,7 +16,7 @@ namespace AdminToolsRepository.Repositories
     /// contains unmanaged resources.
     /// Ideas implemented here learned from https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
     /// </summary>
-    public class TicketsRepo : IUserRepository
+    public class TicketsRepo : ITicketsRepo
     {
     
         /// <summary>
@@ -29,7 +29,7 @@ namespace AdminToolsRepository.Repositories
         /// Empty constructor to instantiate the context
         /// and then assign to context variable
         /// </summary>
-        public TicetsRepo() 
+        public TicketsRepo() 
         {
            // context = new EventFunctionsContext();
         }
@@ -38,16 +38,16 @@ namespace AdminToolsRepository.Repositories
         /// Pass in context using Dependency Injection
         /// and assign to context variable
         /// </summary>
-        public TicketsRepo(EventFunctionsContext eventFunctionsContext) 
+        public TicketsRepo(TicketsContext ticketsContext) 
         {
-          //  context = eventFunctionsContext;
+          //  context = ticketsContext;
         }
 
         public Ticket InsertTicket(Ticket ticket) 
         {
             context.Add<Ticket>(ticket);
             Save();
-            var getBackTicket = context.Ticket.FirstOrDefault(n => Id.Equals(ticket.Id, n.Id));
+            var getBackTicket = context.Tickets.FirstOrDefault(n => Id.Equals(ticket.Id, n.Id));
             return getBackTicket;
         }
 

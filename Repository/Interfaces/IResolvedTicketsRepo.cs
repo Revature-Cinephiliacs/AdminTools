@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Domain.Models;
+using Repository.Models;
 
-namespace AdminToolsRepository.Interfaces 
+namespace Repository.Interfaces 
 {
  
     /// <summary>
