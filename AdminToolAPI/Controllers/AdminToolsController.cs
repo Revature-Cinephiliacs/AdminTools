@@ -5,13 +5,22 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Repository.Interfaces;
+using Repository.Models;
+using Repository.Repositories;
 
 namespace AdminToolAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AdminToolAPI : ControllerBase
+    public class AdminToolsController : ControllerBase
     {
+        private readonly ITicketsRepo iTicketsRepo;
+
+        AdminToolsController()
+        {
+            iTicketsRepo = new TicketsRepo(new Cinephiliacs_AdminContext());
+        }
 
         /// <summary>
         /// Example for using authentication
