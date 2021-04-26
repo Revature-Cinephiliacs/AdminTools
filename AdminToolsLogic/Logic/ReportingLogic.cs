@@ -11,7 +11,7 @@ namespace AdminToolsLogic.Logic
         private readonly AdminRepository _repo;
         private readonly Mapper _mapper;
 
-        ReportingLogic(AdminRepository _repo, Mapper _mapper)
+        public ReportingLogic(AdminRepository _repo, Mapper _mapper)
         {
             this._repo = _repo;
             this._mapper = _mapper;
