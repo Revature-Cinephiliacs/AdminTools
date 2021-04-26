@@ -11,5 +11,6 @@ namespace Repository.Models
         public string ItemId { get; set; }
         public string AffectedService { get; set; }
         public string Descript { get; set; }
+        public DateTime? TimeSubmitted { get; set; }
     }
 }

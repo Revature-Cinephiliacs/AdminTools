@@ -36,7 +36,7 @@ namespace Repository.Models
             modelBuilder.Entity<ResolvedTicket>(entity =>
             {
                 entity.HasKey(e => e.TicketId)
-                    .HasName("PK__Resolved__712CC627A0E0A678");
+                    .HasName("PK__Resolved__712CC627A3BCA0D8");
 
                 entity.Property(e => e.TicketId)
                     .ValueGeneratedNever()
@@ -53,6 +53,8 @@ namespace Repository.Models
                 entity.Property(e => e.ItemId)
                     .IsUnicode(false)
                     .HasColumnName("ItemID");
+
+                entity.Property(e => e.TimeSubmitted).HasColumnType("datetime");
             });
 
             modelBuilder.Entity<Ticket>(entity =>
@@ -72,6 +74,8 @@ namespace Repository.Models
                 entity.Property(e => e.ItemId)
                     .IsUnicode(false)
                     .HasColumnName("ItemID");
+
+                entity.Property(e => e.TimeSubmitted).HasColumnType("datetime");
             });
 
             OnModelCreatingPartial(modelBuilder);
