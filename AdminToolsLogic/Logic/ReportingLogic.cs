@@ -1,20 +1,25 @@
 using System.Threading.Tasks;
+using AdminToolsLogic.LogicHelper;
 using AdminToolsModels.LogicModels;
 using Repository;
+using Repository.Models;
 
 namespace AdminToolsLogic.Logic
 {
     public class ReportingLogic
     {
         private readonly AdminRepository _repo;
-        ReportingLogic(AdminRepository _repo)
+        private readonly Mapper _mapper;
+
+        ReportingLogic(AdminRepository _repo, Mapper _mapper)
         {
             this._repo = _repo;
+            this._mapper = _mapper;
         }
         public async Task<bool> CreateReportTicket(ReportModel model)
         {
-            _repo.CreateTicket(model);
-            return false;
+            Ticket ticket = _mapper.GetTicket(model);
+            return await _repo.CreateTicket(ticket);
         }
     }
 }

@@ -1,22 +1,27 @@
 using System;
+using System.Threading.Tasks;
 using AdminToolsModels.LogicModels;
+using Repository.Models;
 
 namespace Repository
 {
     public class AdminRepository
     {
-        AdminRepository()
-        {
+        private readonly Cinephiliacs_AdminContext _context;
 
+        AdminRepository(Cinephiliacs_AdminContext _context)
+        {
+            this._context = _context;
         }
 
         /// <summary>
         /// Add a new report in the ticket table
         /// </summary>
         /// <param name="p"></param>
-        public void CreateTicket(ReportModel p)
+        public async Task<bool> CreateTicket(Ticket ticket)
         {
-            // add a new entry in the ticket table
+            _context.Add(ticket);
+            return await _context.SaveChangesAsync() > 0;
         }
     }
 }
