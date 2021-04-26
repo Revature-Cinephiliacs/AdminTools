@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.6.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminLogic", "AdminLogic\AdminLogic.csproj", "{4822DE5B-5196-47EB-99A7-EB778C4E4588}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminToolLogic", "AdminToolLogic\AdminToolLogic.csproj", "{4822DE5B-5196-47EB-99A7-EB778C4E4588}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminToolAPI", "AdminToolAPI\AdminToolAPI.csproj", "{21978527-976B-4E1D-9E5A-31B5FAF0C420}"
 EndProject
