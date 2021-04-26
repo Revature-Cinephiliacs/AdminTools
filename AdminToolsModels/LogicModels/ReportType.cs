@@ -1,6 +1,6 @@
-namespace AdminLogic.LogicModels
+namespace AdminToolsModels.LogicModels
 {
-    enum ReportType
+    public enum ReportType
     {
         Review,
         User,

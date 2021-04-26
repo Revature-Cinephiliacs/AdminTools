@@ -1,12 +1,19 @@
 using System.Threading.Tasks;
-using AdminLogic.LogicModels;
+using AdminToolsRepository;
+using AdminToolsModels.LogicModels;
 
-namespace AdminLogic.Logic
+namespace AdminToolsModels.LogicModels
 {
     class ReportingLogic
     {
-        public async Task<bool> CreateReportTicket(ReportType reportType, string id, string description)
+        private readonly AdminRepository _repo;
+        ReportingLogic(AdminRepository _repo)
         {
+            this._repo = _repo;
+        }
+        public async Task<bool> CreateReportTicket(ReportModel model)
+        {
+            _repo.CreateTicket(model);
             return false;
         }
     }

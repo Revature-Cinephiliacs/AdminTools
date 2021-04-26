@@ -31,6 +31,9 @@ namespace AdminToolAPI
 
             services.AddControllers();
 
+            // services.AddScoped<ReportingLogic>();
+            // services.AddScoped<>();
+
             // for authentication
             services.AddAuthentication(o =>
             {

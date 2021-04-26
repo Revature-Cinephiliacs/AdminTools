@@ -16,9 +16,9 @@ namespace AdminToolAPI.Controllers
         /// Get Reported User
         /// </summary>
         /// <returns></returns>
-        [HttpGet("User")]
+        [HttpPost]
         [Authorize]
-        public async Task<ActionResult<string>> GetUserReport()
+        public async Task<ActionResult<string>> GenerateReportTicket([FromBody] dynamic Model)
         {
 
             return Ok(new { response = "success" });
