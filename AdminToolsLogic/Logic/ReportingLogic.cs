@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
-using AdminToolsRepository;
 using AdminToolsModels.LogicModels;
+using Repository;
 
 namespace AdminToolsModels.LogicModels
 {

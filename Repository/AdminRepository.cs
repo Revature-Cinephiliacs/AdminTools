@@ -1,7 +1,7 @@
 using System;
 using AdminToolsModels.LogicModels;
 
-namespace AdminToolsRepository
+namespace Repository
 {
     public class AdminRepository
     {
