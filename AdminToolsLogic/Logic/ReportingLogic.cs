@@ -2,9 +2,9 @@ using System.Threading.Tasks;
 using AdminToolsModels.LogicModels;
 using Repository;
 
-namespace AdminToolsModels.LogicModels
+namespace AdminToolsLogic.Logic
 {
-    class ReportingLogic
+    public class ReportingLogic
     {
         private readonly AdminRepository _repo;
         ReportingLogic(AdminRepository _repo)
