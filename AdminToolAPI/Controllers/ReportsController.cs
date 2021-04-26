@@ -10,17 +10,17 @@ namespace AdminToolAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AdminToolAPI : ControllerBase
+    public class ReportsController : ControllerBase
     {
-
         /// <summary>
-        /// Example for using authentication
+        /// Get Reported User
         /// </summary>
         /// <returns></returns>
-        [HttpGet("AdminTools")]
+        [HttpGet("User")]
         [Authorize]
-        public async Task<ActionResult<string>> GetExample()
+        public async Task<ActionResult<string>> GetUserReport()
         {
+
             return Ok(new { response = "success" });
         }
     }
