@@ -27,7 +27,7 @@ namespace AdminToolsTests
             string userID = "USERID123";
             string description = "report description";
             DateTime time = DateTime.Now;
-            using (var context = new Cinephiliacs_AdminContext(options))
+            using (var context = new Cinephiliacs_AdmintoolsContext(options))
             {
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
@@ -43,7 +43,7 @@ namespace AdminToolsTests
                 bool success = await logic.CreateReportTicket(model);
             }
 
-            using (var context1 = new Cinephiliacs_AdminContext(options))
+            using (var context1 = new Cinephiliacs_AdmintoolsContext(options))
             {
                 context1.Database.EnsureCreated();
                 var ticket = context1.Tickets.Where(t => t.ItemId == userID && t.Descript == description && t.TimeSubmitted == time).FirstOrDefault();
