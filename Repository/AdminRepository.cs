@@ -11,7 +11,7 @@ namespace Repository
     {
         private readonly Cinephiliacs_AdminContext _context;
 
-        AdminRepository(Cinephiliacs_AdminContext _context)
+        public AdminRepository(Cinephiliacs_AdminContext _context)
         {
             this._context = _context;
         }

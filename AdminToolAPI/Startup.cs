@@ -30,10 +30,11 @@ namespace AdminToolAPI
 
         public IConfiguration Configuration { get; }
 
+        private readonly string corsRule = "rule";
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
 
 
             var myConnString = Configuration.GetConnectionString("Cinephiliacs_Admin");
@@ -42,6 +43,17 @@ namespace AdminToolAPI
                 options.UseSqlServer(myConnString);
             });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: corsRule,
+                    builder => builder
+                    .WithOrigins(
+                        "http://20.94.137.143/" // deployed angular frontend
+                    )
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                );
+            });
 
             services.AddControllers();
 
@@ -90,6 +102,8 @@ namespace AdminToolAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(corsRule);
 
             app.UseAuthentication();
 

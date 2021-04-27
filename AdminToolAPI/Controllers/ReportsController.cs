@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AdminToolsLogic.Logic;
+using AdminToolsModels.LogicModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -26,9 +27,9 @@ namespace AdminToolAPI.Controllers
         /// <returns></returns>
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<string>> GenerateReportTicket([FromBody] dynamic model)
+        public async Task<ActionResult<string>> GenerateReportTicket([FromBody] ReportModel model)
         {
-            if (_reportLogic.CreateReportTicket(model))
+            if (await _reportLogic.CreateReportTicket(model))
             {
                 return Ok(new { response = "success" });
             }
