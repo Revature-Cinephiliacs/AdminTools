@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using AdminToolsLogic.LogicHelper;
 using AdminToolsModels.LogicModels;
 using Repository;
@@ -27,9 +28,9 @@ namespace AdminToolsLogic.Logic
         /// Read function to return all tickets
         /// </summary>
         /// <returns></returns>
-        public async Task<List<Ticket>> GetAllTickets() {
+        public List<Ticket> GetAllTickets() {
 
-            return await _repo.GetAllTickets();
+            return _repo.GetAllTickets();
         }
     }
 }
