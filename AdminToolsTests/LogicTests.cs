@@ -1,4 +1,6 @@
 using System;
+using System.Linq;
+using System.Collections.Generic;
 using Xunit;
 using Repository;
 using Repository.Models;
@@ -6,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 using AdminToolsLogic.Logic;
 using AdminToolsLogic.LogicHelper;
 using AdminToolsModels.LogicModels;
-using System.Linq;
 
 namespace AdminToolsTests
 {
@@ -49,6 +50,28 @@ namespace AdminToolsTests
                 var ticket = context1.Tickets.Where(t => t.ItemId == userID && t.Descript == description && t.TimeSubmitted == time).FirstOrDefault();
                 Assert.NotNull(ticket);
             }
+        }
+
+
+        /// <summary>
+        /// Test to get all ticket from database.
+        /// Gets the tickets from business logic, which communicates with Repo.
+        /// </summary>
+        [Fact]
+        public void Test_GetTickets()
+        {
+
+            List<Ticket> allTickets;
+            using (var context = new Cinephiliacs_AdminContext())
+            {
+                AdminRepository repo = new AdminRepository(context);
+                Mapper testMapper = new Mapper();
+                TicketLogic testLogic = new TicketLogic(repo, testMapper);
+
+                allTickets = testLogic.GetAllTickets();
+            }
+
+            Assert.True(allTickets.Count > 0);
         }
     }
 }
