@@ -18,7 +18,7 @@ namespace AdminToolsLogic.Logic
         private readonly AdminRepository _repo;
         private readonly Mapper _mapper;
 
-        TicketLogic(AdminRepository _repo, Mapper _mapper)
+        public TicketLogic(AdminRepository _repo, Mapper _mapper)
         {
             this._repo = _repo;
             this._mapper = _mapper;
