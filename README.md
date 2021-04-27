@@ -8,9 +8,7 @@ POST request:
 
 - {baseURL}/Reports
 
-**REQUIRED**
-
-Body:
+**REQUIRED** Body:
 
 ```
 {
