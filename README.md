@@ -10,8 +10,10 @@ POST request:
 
 **REQUIRED**
 
+Body:
+
 ```
-Body {
+{
     string ReportEntityType
     string ReportDescription
     string ReportEnitityId
