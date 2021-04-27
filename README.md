@@ -9,11 +9,10 @@ baseURL: the deployment url
 <ol>
     <li>POST request:
     <ul>
-        <li>Endpoint: <samp>{baseURL}/Reports</samp></li>
+        <li>Endpoint: <code>{baseURL}/Reports</code></li>
         <li>
         <b>REQUIRED</b> Body: </br>
-<pre><code>
-{
+<pre><code>{
     string ReportEntityType
     string ReportDescription
     string ReportEnitityId
@@ -22,7 +21,7 @@ baseURL: the deployment url
         <li>ReportEntityType can be:
         <ul>
             <li>
-            Review, User, Movie, Group or Forum.
+            <code>Review, User, Movie, Group or Forum.</code>
             </li>
         </ul>
         </li>
