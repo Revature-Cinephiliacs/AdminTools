@@ -17,6 +17,7 @@ namespace Repository.Models
         {
         }
 
+        public virtual DbSet<AffectedSubject> AffectedSubjects { get; set; }
         public virtual DbSet<ResolvedTicket> ResolvedTickets { get; set; }
         public virtual DbSet<Ticket> Tickets { get; set; }
 
@@ -32,6 +33,17 @@ namespace Repository.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+
+            modelBuilder.Entity<AffectedSubject>(entity =>
+            {
+                entity.HasKey(e => e.AffectedSubject1)
+                    .HasName("PK__Affected__602FF4E140DD28A4");
+
+                entity.Property(e => e.AffectedSubject1)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("AffectedSubject");
+            });
 
             modelBuilder.Entity<ResolvedTicket>(entity =>
             {
