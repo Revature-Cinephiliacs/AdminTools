@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using AdminToolsModels.LogicModels;
 using Repository.Models;
+using System.Linq;
 
 namespace Repository
 {
@@ -29,8 +30,8 @@ namespace Repository
         /// Read all tickets and return as list
         /// </summary>
         /// <returns></returns>
-        public async Task<List<Ticket>> GetAllTickets() {
-            return await _context.Tickets.ToList();
+        public List<Ticket> GetAllTickets() {
+            return _context.Tickets.ToList();
         }
 
     }
