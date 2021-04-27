@@ -62,7 +62,7 @@ namespace AdminToolsTests
         {
 
             List<Ticket> allTickets;
-            using (var context = new Cinephiliacs_AdminContext())
+            using (var context = new Cinephiliacs_AdmintoolsContext())
             {
                 AdminRepository repo = new AdminRepository(context);
                 Mapper testMapper = new Mapper();
