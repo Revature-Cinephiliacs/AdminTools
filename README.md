@@ -23,7 +23,7 @@
         <li><code>ReportEntityType</code> can be:
         <ul>
             <li>
-            <code>Review</code>, <code>User</code>, <code>Movie</code>, <code>Group</code> or <code>Forum.</code>
+            <code>Review</code>, <code>User</code>, <code>Movie</code>, <code>Group</code> or <code>Forum</code>.
             </li>
         </ul>
         </li>
