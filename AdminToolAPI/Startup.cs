@@ -38,12 +38,7 @@ namespace AdminToolAPI
 
 
 
-            var myConnString = Configuration.GetConnectionString("Cinephiliacs_Admintools");
-            services.AddDbContext<Cinephiliacs_AdmintoolsContext>(options =>
 
-            {
-                options.UseSqlServer(myConnString);
-            });
 
             services.AddCors(options =>
             {
