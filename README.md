@@ -2,22 +2,32 @@
 
 ## Available Requests
 
-- baseURL: the deployment url
+baseURL: the deployment url
 
-POST request:
+---
 
-- {baseURL}/Reports
-
-**REQUIRED** Body:
-
-```
-{
-    string ReportEntityType
-    string ReportDescription
-    string ReportEnitityId
-}
-```
-
-ReportEntityType can be:
-
-- Review, User, Movie, Group or Forum.
+<ul>
+    <li>POST request:
+    <ul>
+        <li>{baseURL}/Reports</li>
+        <li>
+        <b>REQUIRED</b> Body:
+        ```
+        {
+            string ReportEntityType
+            string ReportDescription
+            string ReportEnitityId
+        }
+        ```
+        </li>
+        <li>ReportEntityType can be:
+        <ul>
+            <li>
+            Review, User, Movie, Group or Forum.
+            </li>
+        </ul>
+        </li>
+    </ul>
+    </li>
+    <li></li>
+</ul>
