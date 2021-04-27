@@ -7,20 +7,28 @@ baseURL: the deployment url
 ---
 
 <ol>
-    <li>
-    <pre>
-    POST request:
-    {baseURL}/Reports
-    <b>REQUIRED</b> Body: </br>
-    <code>
+    <li>POST request:
+    <ul>
+        <li><samp>{baseURL}/Reports</samp></li>
+        <li>
+        <b>REQUIRED</b> Body: </br>
+        <pre>
+        <code>
 {
     string ReportEntityType
     string ReportDescription
     string ReportEnitityId
 }
-    </code>
-    ReportEntityType can be:
-    <samp>
-        Review, User, Movie, Group or Forum.</samp></pre>
+        </code>
+        </pre>
+        </li>
+        <li>ReportEntityType can be:
+        <ul>
+            <li>
+            Review, User, Movie, Group or Forum.
+            </li>
+        </ul>
+        </li>
+    </ul>
     </li>
 </ol>
