@@ -2,7 +2,7 @@
 
 ## Available Requests
 
-baseURL: the deployment url
+<code>baseURL</code> -- the deployment url
 
 ---
 
@@ -18,7 +18,7 @@ baseURL: the deployment url
     string ReportEnitityId
 }</code></pre>
         </li>
-        <li>ReportEntityType can be:
+        <li><code>ReportEntityType</code> can be:
         <ul>
             <li>
             <code>Review, User, Movie, Group or Forum.</code>
