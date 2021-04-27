@@ -6,19 +6,21 @@ baseURL: the deployment url
 
 ---
 
-<ul>
+<ol>
     <li>POST request:
     <ul>
         <li>{baseURL}/Reports</li>
         <li>
-        <b>REQUIRED</b> Body:
-        ```
+        <b>REQUIRED</b> Body: </br>
+        <pre>
+        <code>
         {
             string ReportEntityType
             string ReportDescription
             string ReportEnitityId
         }
-        ```
+        </code>
+        </pre>
         </li>
         <li>ReportEntityType can be:
         <ul>
@@ -29,5 +31,4 @@ baseURL: the deployment url
         </li>
     </ul>
     </li>
-    <li></li>
-</ul>
+</ol>
