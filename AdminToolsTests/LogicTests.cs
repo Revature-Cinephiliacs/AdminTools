@@ -12,7 +12,7 @@ namespace AdminToolsTests
 {
     public class UnitTest1
     {
-        readonly DbContextOptions<Cinephiliacs_AdminContext> options = new DbContextOptionsBuilder<Cinephiliacs_AdminContext>()
+        readonly DbContextOptions<Cinephiliacs_AdmintoolsContext> options = new DbContextOptionsBuilder<Cinephiliacs_AdmintoolsContext>()
             .UseInMemoryDatabase(databaseName: "Test")
             .Options;
 

@@ -9,9 +9,9 @@ namespace Repository
 {
     public class TopicsRepository
     {
-        private readonly Cinephiliacs_AdminContext _context;
+        private readonly Cinephiliacs_AdmintoolsContext _context;
 
-        public TopicsRepository(Cinephiliacs_AdminContext _context)
+        public TopicsRepository(Cinephiliacs_AdmintoolsContext _context)
         {
             this._context = _context;
         }

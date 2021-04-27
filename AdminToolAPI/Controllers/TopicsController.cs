@@ -22,7 +22,7 @@ namespace AdminToolAPI.Controllers
         }
 
         /// <summary>
-        /// Create a ticket for a Reported Entity
+        /// Get list of topics
         /// </summary>
         /// <returns></returns>
         [HttpGet]
