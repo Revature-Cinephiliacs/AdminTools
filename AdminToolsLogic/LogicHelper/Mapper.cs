@@ -6,6 +6,11 @@ namespace AdminToolsLogic.LogicHelper
 {
     public class Mapper
     {
+        /// <summary>
+        /// Maps a ReportModel object into a Ticket object
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>Ticket</returns>
         public Ticket GetTicket(ReportModel model)
         {
             return new Ticket()
@@ -18,6 +23,11 @@ namespace AdminToolsLogic.LogicHelper
             };
         }
 
+        /// <summary>
+        /// Maps a Ticket object into a ReportModel object
+        /// </summary>
+        /// <param name="ticket"></param>
+        /// <returns>ReportModel</returns>
         public ReportModel GetReportModel(Ticket ticket)
         {
             return new ReportModel()
@@ -30,6 +40,11 @@ namespace AdminToolsLogic.LogicHelper
             };
         }
 
+        /// <summary>
+        /// Gets the ReportType based on the string type
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns>ReportType</returns>
         private ReportType _getReportTypeEnum(string type)
         {
             switch (type)
