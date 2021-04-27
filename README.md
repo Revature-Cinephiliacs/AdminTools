@@ -8,13 +8,15 @@ POST request:
 
 - {baseURL}/Reports
 
-[REQUIRED]
+**REQUIRED** Body:
 
-> Body {
-> string ReportEntityType
-> string ReportDescription
-> string ReportEnitityId
-> }
+```
+{
+    string ReportEntityType
+    string ReportDescription
+    string ReportEnitityId
+}
+```
 
 ReportEntityType can be:
 
