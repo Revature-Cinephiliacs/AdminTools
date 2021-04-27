@@ -8,6 +8,11 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace AdminToolsTests
 {
+    /// <summary>
+    /// A factory for configuring web hosts for testing
+    /// configure the issuer, sigining key, and audience
+    /// </summary>
+    /// <typeparam name="TStartup"></typeparam>
     public class CustomWebApplicationFactory<TStartup> : WebApplicationFactory<Startup>
     {
         protected override void ConfigureWebHost(IWebHostBuilder builder)
