@@ -49,9 +49,9 @@ namespace AdminToolsLogic.Logic
             RequestHandler handler = new RequestHandler();
             var allTickets = _repo.GetAllTickets();
 
-            var discussionTickets = allTickets.Where(t => t.AffectedService == ReportType.Discussion.ToString());
-            var commentTickets = allTickets.Where(t => t.AffectedService == ReportType.Review.ToString());
-            var reviewTickets = allTickets.Where(t => t.AffectedService == ReportType.Comment.ToString());
+            var discussionTickets = allTickets.Where(t => t.AffectedService == ReportType.Discussion.ToString()).Select(t => t.ItemId).ToList();
+            var commentTickets = allTickets.Where(t => t.AffectedService == ReportType.Review.ToString()).Select(t => t.ItemId).ToList();
+            var reviewTickets = allTickets.Where(t => t.AffectedService == ReportType.Comment.ToString()).Select(t => t.ItemId).ToList();
 
             // todo: add the actual url extensions
             var reportedDiscussions = await handler.Sendrequest(ReportType.Discussion, "", Method.GET, token, discussionTickets);
