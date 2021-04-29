@@ -7,8 +7,13 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace AdminToolsTests
 {
+    
     public static class FakeJwtManager
     {
+        /// <summary>
+        /// Generates a Mock Jwt Token
+        /// </summary>
+        /// <returns></returns>
         public static string Issuer { get; } = Guid.NewGuid().ToString();
         public static string Audience { get; } = Guid.NewGuid().ToString();
         public static SecurityKey SecurityKey { get; }

@@ -49,12 +49,10 @@ namespace AdminToolsLogic.LogicHelper
         {
             switch (type)
             {
-                case "User": return ReportType.User;
+                case "Discussion": return ReportType.Discussion;
                 case "Review": return ReportType.Review;
-                case "Forum": return ReportType.Forum;
-                case "Movie": return ReportType.Movie;
-                case "Group": return ReportType.Group;
-                default: return ReportType.User;
+                case "Comment": return ReportType.Comment;
+                default: return ReportType.Discussion;
             }
         }
     }

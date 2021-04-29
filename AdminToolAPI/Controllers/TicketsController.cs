@@ -23,19 +23,15 @@ namespace AdminToolAPI.Controllers
         }
 
         /// <summary>
-        /// Create a ticket for a Reported Entity
+        /// Get all reported items
         /// </summary>
         /// <returns></returns>
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<string>> GetAllTickets()
+        public async Task<ActionResult<dynamic>> GetAllTickets()
         {
-            if (_ticketLogic.GetAllTickets() != null)
-            {
-                return Ok(new { response = "success" });
-            }
-
-            return new StatusCodeResult(400);
+            var token = Helpers.Helper.GetTokenFromRequest(this.Request);
+            return await _ticketLogic.GetAllReportedItems(token);
         }
 
     }

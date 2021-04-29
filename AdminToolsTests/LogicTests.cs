@@ -36,7 +36,7 @@ namespace AdminToolsTests
                 ReportingLogic logic = new ReportingLogic(repo, new Mapper());
                 ReportModel model = new ReportModel()
                 {
-                    ReportEntityType = ReportType.User,
+                    ReportEntityType = ReportType.Review,
                     ReportEnitityId = userID,
                     ReportDescription = description,
                     ReportTime = time

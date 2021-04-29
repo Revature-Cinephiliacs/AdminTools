@@ -2,6 +2,9 @@ using System;
 
 namespace AdminToolsModels.LogicModels
 {
+    /// <summary>
+    /// Used for recieving report items
+    /// </summary>
     public class ReportModel
     {
         public int ReportId { get; set; }
