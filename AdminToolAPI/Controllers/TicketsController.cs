@@ -26,8 +26,8 @@ namespace AdminToolAPI.Controllers
         /// Get all reported items
         /// </summary>
         /// <returns></returns>
-        [HttpPost]
-        [Authorize]
+        [HttpGet]
+        [Authorize("manage:awebsite")]
         public async Task<ActionResult<dynamic>> GetAllTickets()
         {
             var token = Helpers.Helper.GetTokenFromRequest(this.Request);

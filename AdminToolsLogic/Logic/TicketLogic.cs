@@ -54,9 +54,9 @@ namespace AdminToolsLogic.Logic
             var reviewTickets = allTickets.Where(t => t.AffectedService == ReportType.Comment.ToString()).Select(t => t.ItemId).ToList();
 
             // todo: add the actual url extensions
-            var reportedDiscussions = await handler.Sendrequest(ReportType.Discussion, "", Method.GET, token, discussionTickets);
-            var reportedComments = await handler.Sendrequest(ReportType.Comment, "", Method.GET, token, commentTickets);
-            var reportedReviews = await handler.Sendrequest(ReportType.Review, "", Method.GET, token, reviewTickets);
+            var reportedDiscussions = await handler.Sendrequest(ReportType.Discussion, "", Method.POST, token, discussionTickets);
+            var reportedComments = await handler.Sendrequest(ReportType.Comment, "", Method.POST, token, commentTickets);
+            var reportedReviews = await handler.Sendrequest(ReportType.Review, "reportedReviews", Method.POST, token, reviewTickets);
             var allLists = new List<dynamic>();
 
             allLists.AddRange(JsonSerializer.Deserialize<List<dynamic>>(reportedComments.Content));
