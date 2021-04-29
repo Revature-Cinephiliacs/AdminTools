@@ -18,7 +18,9 @@ namespace AdminToolsTests
         {
             _httpClient = factory.CreateClient();
         }
-
+        ///<summary>
+        /// Tests the endpoints for creating a ticket
+        ///</summary>
         [Fact]
         public async Task TestCreateTicketEndpoint()
         {
