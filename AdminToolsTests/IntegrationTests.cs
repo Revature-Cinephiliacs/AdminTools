@@ -18,11 +18,9 @@ namespace AdminToolsTests
         {
             _httpClient = factory.CreateClient();
         }
-
-        /// <summary>
-        /// Testing adding a new report endpoint
-        /// </summary>
-        /// <returns></returns>
+        ///<summary>
+        /// Tests the endpoints for creating a ticket
+        ///</summary>
         [Fact]
         public async Task TestCreateTicketEndpoint()
         {
