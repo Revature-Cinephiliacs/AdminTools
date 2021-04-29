@@ -6,6 +6,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Repository.Models
 {
+ 
+        /// <summary>
+        /// Context for our database
+        /// Avalible models: Topics, Resolved tickets, Tickets
+        /// </summary>
     public partial class Cinephiliacs_AdmintoolsContext : DbContext
     {
         public Cinephiliacs_AdmintoolsContext()

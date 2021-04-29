@@ -5,6 +5,11 @@ using System.Collections.Generic;
 
 namespace Repository.Models
 {
+
+        /// <summary>
+        /// Resolved tickets model.
+        /// Models for tickets that have already been resolved
+        /// </summary>
     public partial class ResolvedTicket
     {
         public int TicketId { get; set; }
