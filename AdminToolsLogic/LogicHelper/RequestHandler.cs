@@ -13,11 +13,11 @@ namespace AdminToolsLogic.LogicHelper
         public RequestHandler()
         {
             apiUrls = new Dictionary<ReportType, string>()
-            // {
-            //     {ReportType.Discussion,"http://20.45.6.142/"},
-            //     {ReportType.Comment,"http://20.45.6.142/"},
-            //     {ReportType.Review,"http://20.189.30.176/"},
-            // };
+            {
+                {ReportType.Discussion,"http://20.45.6.142/"},
+                {ReportType.Comment,"http://20.45.6.142/"},
+                {ReportType.Review,"http://20.189.30.176/"},
+            };
             {
                 {ReportType.Discussion,"https://localhost:5002/"},
                 {ReportType.Comment,"https://localhost:5002/"},
