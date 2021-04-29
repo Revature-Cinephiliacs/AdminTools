@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text.Json;
 using System.Threading.Tasks;
 using AdminToolsModels.LogicModels;
@@ -12,17 +13,24 @@ namespace AdminToolsLogic.LogicHelper
         Dictionary<ReportType, string> apiUrls;
         public RequestHandler()
         {
-            apiUrls = new Dictionary<ReportType, string>()
-            // {
-            //     {ReportType.Discussion,"http://20.45.6.142/"},
-            //     {ReportType.Comment,"http://20.45.6.142/"},
-            //     {ReportType.Review,"http://20.189.30.176/"},
-            // };
+            if (Debugger.IsAttached)
             {
-                {ReportType.Discussion,"https://localhost:5002/"},
-                {ReportType.Comment,"https://localhost:5002/"},
-                {ReportType.Review,"https://localhost:5009/"},
-            };
+                apiUrls = new Dictionary<ReportType, string>()
+                {
+                    { ReportType.Discussion,"https://localhost:5002/"},
+                    { ReportType.Comment,"https://localhost:5002/"},
+                    { ReportType.Review,"https://localhost:5009/"},
+                };
+            }
+            else
+            {
+                apiUrls = new Dictionary<ReportType, string>()
+                {
+                    {ReportType.Discussion,"http://20.45.6.142/"},
+                    {ReportType.Comment,"http://20.45.6.142/"},
+                    {ReportType.Review,"http://20.189.30.176/"},
+                };
+            }
         }
 
         /// <summary>
