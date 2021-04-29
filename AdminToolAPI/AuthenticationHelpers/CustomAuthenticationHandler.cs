@@ -22,6 +22,11 @@ namespace AdminToolAPI.Helpers
             ServiceProvider = serviceProvider;
         }
 
+        /// <summary>
+        /// Handles the request and determines if it has a valid token or not. <br/>
+        /// Adds permissions specific to the current user
+        /// </summary>
+        /// <returns></returns>
         protected async override Task<AuthenticateResult> HandleAuthenticateAsync()
         {
             var headers = Request.Headers;
