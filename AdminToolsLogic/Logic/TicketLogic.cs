@@ -41,27 +41,54 @@ namespace AdminToolsLogic.Logic
         /// Get all reported items from all other apis
         /// </summary>
         /// <returns></returns>
-        public async Task<List<dynamic>> GetAllReportedItems(string token)
+        public async Task<List<TicketItem>> GetAllReportedItems(string token)
         {
             // comments
             // movie reviews
             // discussion threads
             RequestHandler handler = new RequestHandler();
-            var allTickets = _repo.GetAllTickets();
+            var allTickets = _repo.GetAllTickets().Select(t => new TicketItem()
+            {
+                AffectedService = t.AffectedService,
+                Descript = t.Descript,
+                ItemId = t.ItemId,
+                TicketId = t.TicketId,
+                TimeSubmitted = t.TimeSubmitted
+            });
 
-            var discussionTickets = allTickets.Where(t => t.AffectedService == ReportType.Discussion.ToString()).Select(t => t.ItemId).ToList();
-            var commentTickets = allTickets.Where(t => t.AffectedService == ReportType.Review.ToString()).Select(t => t.ItemId).ToList();
-            var reviewTickets = allTickets.Where(t => t.AffectedService == ReportType.Comment.ToString()).Select(t => t.ItemId).ToList();
+            var discussionTickets = allTickets.Where(t => t.AffectedService == ReportType.Discussion.ToString()).ToList();
+            var commentTickets = allTickets.Where(t => t.AffectedService == ReportType.Review.ToString()).ToList();
+            var reviewTickets = allTickets.Where(t => t.AffectedService == ReportType.Comment.ToString()).ToList();
 
-            // todo: add the actual url extensions
-            var reportedDiscussions = await handler.Sendrequest(ReportType.Discussion, "forum/discussion/reports", Method.POST, token, discussionTickets);
-            var reportedComments = await handler.Sendrequest(ReportType.Comment, "forum/comment/reports", Method.POST, token, commentTickets);
-            var reportedReviews = await handler.Sendrequest(ReportType.Review, "reportedReviews", Method.POST, token, reviewTickets);
-            var allLists = new List<dynamic>();
+            var reportedDiscussions = JsonSerializer.Deserialize<List<dynamic>>(
+                (await handler.Sendrequest(ReportType.Discussion, "forum/discussion/reports", Method.POST, token, discussionTickets.Select(t => t.ItemId).ToList())).Content);
+            var reportedComments = JsonSerializer.Deserialize<List<dynamic>>(
+                (await handler.Sendrequest(ReportType.Comment, "forum/comment/reports", Method.POST, token, commentTickets.Select(t => t.ItemId).ToList())).Content);
+            var reportedReviews = JsonSerializer.Deserialize<List<dynamic>>(
+                (await handler.Sendrequest(ReportType.Review, "reportedReviews", Method.POST, token, reviewTickets.Select(t => t.ItemId).ToList())).Content);
 
-            allLists.AddRange(JsonSerializer.Deserialize<List<dynamic>>(reportedComments.Content));
-            allLists.AddRange(JsonSerializer.Deserialize<List<dynamic>>(reportedDiscussions.Content));
-            allLists.AddRange(JsonSerializer.Deserialize<List<dynamic>>(reportedReviews.Content));
+            discussionTickets.ForEach(dticket =>
+            {
+                dticket.Item = reportedDiscussions
+                    .Where(d => d.DiscussionId == dticket.ItemId)
+                    .FirstOrDefault();
+            });
+            commentTickets.ForEach(cTicket =>
+            {
+                cTicket.Item = reportedDiscussions
+                    .Where(d => d.DiscussionId == cTicket.ItemId)
+                    .FirstOrDefault();
+            });
+            reviewTickets.ForEach(rTicket =>
+            {
+                rTicket.Item = reportedDiscussions
+                    .Where(d => d.DiscussionId == rTicket.ItemId)
+                    .FirstOrDefault();
+            });
+            var allLists = new List<TicketItem>();
+            allLists.AddRange(discussionTickets);
+            allLists.AddRange(commentTickets);
+            allLists.AddRange(reviewTickets);
             return allLists;
         }
     }
