@@ -21,11 +21,11 @@ variables:
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
-  stages:
+stages:
   - stage: Build
     displayName: Build stage
     jobs:
-    - job: Sonarlcloud
+    - job: Sonarcloud
       displayName: SonarCloud
       pool:
         vmImage: $(vmImageName)
