@@ -55,15 +55,17 @@ stages:
       - task: NuGetCommand@2
         inputs:
           restoreSolution: '$(solution)'
+
       - task: SonarCloudPrepare@1
         inputs:
           SonarCloud: 'SonarCloudAdminTools'
-          organization: 'Revature-Cinephiliacs'
+          organization: 'revature-cinephiliacs'
           scannerMode: 'MSBuild'
           projectKey: 'Revature-Cinephiliacs_AdminTools'
           projectName: 'AdminTools'
           extraProperties: 
             sonar.cs.opencover.reportsPaths=$(Agent.TempDirectory)/*/coverage.opencover.xml
+
       - task: DotNetCoreCLI@2
         inputs:
           command: publish
