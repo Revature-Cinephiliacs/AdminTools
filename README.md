@@ -36,11 +36,11 @@ Endpoints can only be called by an **Admin** user
         <li>Returns: <code>List of TicketItem</code></li>
         <li><code>TicketItem</code> object:
         <ul><li>
-<pre><code>TicketId: int // optional please don't give this
+<pre><code>TicketId: int // report id
 ItemId: string // the id of thing being reported
 AffectedService: string // can be only one of ReportEntityType
 Descript: string 
-TimeSubmitted: DateTime //optional
+TimeSubmitted: DateTime
 Item: dynamic</code></pre></li>
         </ul>
         </li>
