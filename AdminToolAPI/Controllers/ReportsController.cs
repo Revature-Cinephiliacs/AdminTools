@@ -35,5 +35,21 @@ namespace AdminToolAPI.Controllers
             }
             return new StatusCodeResult(400);
         }
+
+        /// <summary>
+        /// Gets the ID for the ticket to be moved from Reports table to the Archive.
+        /// </summary>
+        /// <param name="archiveId"></param>
+        /// <returns></returns>
+        [HttpPost("archive")]
+        [Authorize("manage:awebsite")]
+        public async Task<ActionResult<bool>> ArchiveReport([FromBody] string archiveId)
+        {
+            if  (await _reportLogic.MoveReportToArchive(archiveId))
+            {
+                return Ok(new { response = "success" });
+            }
+            return new StatusCodeResult(400);
+        }
     }
 }
