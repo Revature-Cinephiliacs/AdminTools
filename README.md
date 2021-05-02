@@ -2,6 +2,7 @@
 
 ## Available Requests
 
+Endpoints can only be called by an **Admin** user
 <code>baseURL</code> -- the deployment url
 
 ---
@@ -23,8 +24,24 @@
         <li><code>ReportEntityType</code> can be:
         <ul>
             <li>
-            <code>Review</code>, <code>User</code>, <code>Movie</code>, <code>Group</code> or <code>Forum</code>.
+            <code>Review</code>, <code>Comment</code>, <code>Discussion</code>.
             </li>
+        </ul>
+        </li>
+    </ul>
+    </li>
+    <li>GET request:
+    <ul>
+        <li>Endpoint: <code>{baseURL}/Tickets</code></li>
+        <li>Returns: <code>List of TicketItem</code></li>
+        <li><code>TicketItem</code> object:
+        <ul><li>
+<pre><code>TicketId: int // report id
+ItemId: string // the id of thing being reported
+AffectedService: string // can be only one of ReportEntityType
+Descript: string 
+TimeSubmitted: DateTime
+Item: dynamic</code></pre></li>
         </ul>
         </li>
     </ul>

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
 using Repository.Models;
-
+using AdminToolsModels.LogicModels;
 
 namespace AdminToolAPI.Controllers
 {
@@ -26,9 +26,9 @@ namespace AdminToolAPI.Controllers
         /// Get all reported items
         /// </summary>
         /// <returns></returns>
-        [HttpPost]
-        [Authorize]
-        public async Task<ActionResult<dynamic>> GetAllTickets()
+        [HttpGet]
+        [Authorize("manage:awebsite")]
+        public async Task<ActionResult<List<TicketItem>>> GetAllTickets()
         {
             var token = Helpers.Helper.GetTokenFromRequest(this.Request);
             return await _ticketLogic.GetAllReportedItems(token);
