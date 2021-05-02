@@ -35,8 +35,19 @@ namespace AdminToolAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-
+            services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: corsRule,
+                    builder => builder
+                    .WithOrigins(
+                        "http://20.94.137.143/", // deployed angular frontend
+                        "http://localhost:4200/" // for testing
+                    )
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                );
+            });
 
             var myConnString = Configuration.GetConnectionString("Cinephiliacs_Admintools");
             services.AddDbContext<Cinephiliacs_AdmintoolsContext>(options =>
@@ -44,20 +55,6 @@ namespace AdminToolAPI
             {
                 options.UseSqlServer(myConnString);
             });
-
-            services.AddCors(options =>
-            {
-                options.AddPolicy(name: corsRule,
-                    builder => builder
-                    .WithOrigins(
-                        "http://20.94.137.143/" // deployed angular frontend
-                    )
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                );
-            });
-
-            services.AddControllers();
 
             services.AddScoped<AdminRepository>();
             services.AddScoped<ReportingLogic>();
