@@ -27,5 +27,23 @@ namespace AdminToolsLogic.Logic
             Ticket ticket = _mapper.GetTicket(model);
             return await _repo.CreateTicket(ticket);
         }
+
+        /// <summary>
+        /// Takes an id from ReportsController.cs and uses it to retrieve and remove
+        /// the report from the reports table, to move it into the archive table.
+        /// </summary>
+        /// <param name="archiveId"></param>
+        /// <returns></returns>
+        public async Task<bool> MoveReportToArchive(string archiveId)
+        {
+            Ticket ticketToArchive = new Ticket();
+            ticketToArchive = _repo.GetTicketById(archiveId);
+            if(ticketToArchive != null){
+                _repo.ArchiveTicket(ticketToArchive);
+                return true;
+            }else{
+                return false;
+            }
+        }
     }
 }
