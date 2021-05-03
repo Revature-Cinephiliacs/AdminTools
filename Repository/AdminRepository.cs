@@ -41,7 +41,7 @@ namespace Repository
         /// <returns></returns>
         public Ticket GetTicketById(string id) 
         {
-            var ticket = _context.Tickets.Where(t=>t.TicketId == id).FirstOrDefault();
+            var ticket = _context.Tickets.Where(t=>t.TicketId == int.Parse(id)).FirstOrDefault();
             return ticket;
             
         }
