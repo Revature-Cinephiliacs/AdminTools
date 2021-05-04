@@ -59,13 +59,26 @@ namespace AdminToolsLogic.Logic
             var discussionTickets = allTickets.Where(t => t.AffectedService == ReportType.Discussion.ToString()).ToList();
             var commentTickets = allTickets.Where(t => t.AffectedService == ReportType.Review.ToString()).ToList();
             var reviewTickets = allTickets.Where(t => t.AffectedService == ReportType.Comment.ToString()).ToList();
+            List<dynamic> reportedDiscussions = new List<dynamic>();
+            List<dynamic> reportedComments = new List<dynamic>();
+            List<dynamic> reportedReviews = new List<dynamic>();
 
-            var reportedDiscussions = JsonSerializer.Deserialize<List<dynamic>>(
-                (await handler.Sendrequest(ReportType.Discussion, "forum/discussion/reports", Method.POST, token, discussionTickets.Select(t => t.ItemId).ToList())).Content);
-            var reportedComments = JsonSerializer.Deserialize<List<dynamic>>(
-                (await handler.Sendrequest(ReportType.Comment, "forum/comment/reports", Method.POST, token, commentTickets.Select(t => t.ItemId).ToList())).Content);
-            var reportedReviews = JsonSerializer.Deserialize<List<dynamic>>(
-                (await handler.Sendrequest(ReportType.Review, "reportedReviews", Method.POST, token, reviewTickets.Select(t => t.ItemId).ToList())).Content);
+            var discReport = (await handler.Sendrequest(ReportType.Discussion, "forum/discussion/reports", Method.POST, token, discussionTickets.Select(t => t.ItemId).ToList())).Content;
+            if(!string.IsNullOrWhiteSpace(discReport))
+            {
+                reportedDiscussions = JsonSerializer.Deserialize<List<dynamic>>(discReport);
+            }
+            var commentReport = (await handler.Sendrequest(ReportType.Comment, "forum/comment/reports", Method.POST, token, commentTickets.Select(t => t.ItemId).ToList())).Content;
+            if(!string.IsNullOrWhiteSpace(commentReport))
+            {
+                reportedComments = JsonSerializer.Deserialize<List<dynamic>>(commentReport);
+            }
+            var reviewReport = (await handler.Sendrequest(ReportType.Review, "reportedReviews", Method.POST, token, reviewTickets.Select(t => t.ItemId).ToList())).Content;
+            if(!string.IsNullOrWhiteSpace(reviewReport))
+            {
+                reportedReviews = JsonSerializer.Deserialize<List<dynamic>>(reviewReport);
+            }
+                
 
             discussionTickets.ForEach(dticket =>
             {
@@ -75,14 +88,14 @@ namespace AdminToolsLogic.Logic
             });
             commentTickets.ForEach(cTicket =>
             {
-                cTicket.Item = reportedDiscussions
-                    .Where(d => d.DiscussionId == cTicket.ItemId)
+                cTicket.Item = reportedComments
+                    .Where(d => d.CommentId == cTicket.ItemId)
                     .FirstOrDefault();
             });
             reviewTickets.ForEach(rTicket =>
             {
-                rTicket.Item = reportedDiscussions
-                    .Where(d => d.DiscussionId == rTicket.ItemId)
+                rTicket.Item = reportedReviews
+                    .Where(d => d.ReviewId == rTicket.ItemId)
                     .FirstOrDefault();
             });
             var allLists = new List<TicketItem>();

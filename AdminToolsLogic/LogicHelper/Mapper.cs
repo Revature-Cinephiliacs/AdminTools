@@ -15,6 +15,7 @@ namespace AdminToolsLogic.LogicHelper
         {
             return new Ticket()
             {
+                TicketId = Guid.NewGuid().ToString(),
                 AffectedService = model.ReportEntityType.ToString(),
                 Descript = model.ReportDescription,
                 ItemId = model.ReportEnitityId,

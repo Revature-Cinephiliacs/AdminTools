@@ -6,11 +6,6 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Repository.Models
 {
- 
-        /// <summary>
-        /// Context for our database
-        /// Avalible models: Topics, Resolved tickets, Tickets
-        /// </summary>
     public partial class Cinephiliacs_AdmintoolsContext : DbContext
     {
         public Cinephiliacs_AdmintoolsContext()
@@ -28,7 +23,7 @@ namespace Repository.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -38,7 +33,7 @@ namespace Repository.Models
             modelBuilder.Entity<AffectedSubject>(entity =>
             {
                 entity.HasKey(e => e.AffectedSubject1)
-                    .HasName("PK__Affected__602FF4E179AB8ED3");
+                    .HasName("PK__Affected__602FF4E1C8930DFF");
 
                 entity.Property(e => e.AffectedSubject1)
                     .HasMaxLength(50)
@@ -49,10 +44,11 @@ namespace Repository.Models
             modelBuilder.Entity<ResolvedTicket>(entity =>
             {
                 entity.HasKey(e => e.TicketId)
-                    .HasName("PK__Resolved__712CC6270C1EDB74");
+                    .HasName("PK__Resolved__712CC627E7A9E5C9");
 
                 entity.Property(e => e.TicketId)
-                    .ValueGeneratedNever()
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
                     .HasColumnName("TicketID");
 
                 entity.Property(e => e.AffectedService)
@@ -73,7 +69,8 @@ namespace Repository.Models
             modelBuilder.Entity<Ticket>(entity =>
             {
                 entity.Property(e => e.TicketId)
-                    .ValueGeneratedNever()
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
                     .HasColumnName("TicketID");
 
                 entity.Property(e => e.AffectedService)

@@ -16,7 +16,7 @@ namespace AdminToolAPI.Controllers
     {
         private readonly ReportingLogic _reportLogic;
 
-        ReportsController(ReportingLogic _reportLogic)
+        public ReportsController(ReportingLogic _reportLogic)
         {
             this._reportLogic = _reportLogic;
         }
@@ -45,7 +45,7 @@ namespace AdminToolAPI.Controllers
         [Authorize("manage:awebsite")]
         public async Task<ActionResult<bool>> ArchiveReport([FromBody] string archiveId)
         {
-            if  (await _reportLogic.MoveReportToArchive(archiveId))
+            if (await _reportLogic.MoveReportToArchive(archiveId))
             {
                 return Ok(new { response = "success" });
             }

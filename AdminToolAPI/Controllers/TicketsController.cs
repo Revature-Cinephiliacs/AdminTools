@@ -17,7 +17,7 @@ namespace AdminToolAPI.Controllers
     {
         private readonly TicketLogic _ticketLogic;
 
-        TicketsController(TicketLogic _ticketLogic)
+        public TicketsController(TicketLogic _ticketLogic)
         {
             this._ticketLogic = _ticketLogic;
         }
