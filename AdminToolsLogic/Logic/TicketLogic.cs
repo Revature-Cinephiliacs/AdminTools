@@ -90,13 +90,13 @@ namespace AdminToolsLogic.Logic
             discussionTickets.ForEach(dticket =>
             {
                 dticket.Item = JsonConvert.SerializeObject(reportedDiscussions
-                    .Where(d => d.DiscussionId == dticket.ItemId)
+                    .Where(d => d.discussionId == dticket.ItemId)
                     .FirstOrDefault());
             });
             commentTickets.ForEach(cTicket =>
             {
                 cTicket.Item = JsonConvert.SerializeObject(reportedComments
-                    .Where(d => d.CommentId == cTicket.ItemId)
+                    .Where(d => d.commentid == cTicket.ItemId)
                     .FirstOrDefault());
             });
             reviewTickets.ForEach(rTicket =>
