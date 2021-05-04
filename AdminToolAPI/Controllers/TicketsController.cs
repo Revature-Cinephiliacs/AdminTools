@@ -17,7 +17,7 @@ namespace AdminToolAPI.Controllers
     {
         private readonly TicketLogic _ticketLogic;
 
-        TicketsController(TicketLogic _ticketLogic)
+        public TicketsController(TicketLogic _ticketLogic)
         {
             this._ticketLogic = _ticketLogic;
         }
@@ -27,7 +27,7 @@ namespace AdminToolAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [Authorize("manage:awebsite")]
+        //[Authorize("manage:awebsite")]
         public async Task<ActionResult<List<TicketItem>>> GetAllTickets()
         {
             var token = Helpers.Helper.GetTokenFromRequest(this.Request);

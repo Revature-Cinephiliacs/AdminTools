@@ -7,7 +7,7 @@ namespace AdminToolsModels.LogicModels
     /// </summary>
     public class ReportModel
     {
-        public int ReportId { get; set; }
+        public string ReportId { get; set; }
         public string ReportEntityType { get; set; }
         public string ReportDescription { get; set; }
         public string ReportEnitityId { get; set; }

@@ -53,13 +53,13 @@ namespace AdminToolAPI
 
             var myConnString = Configuration.GetConnectionString("Cinephiliacs_Admintools");
             services.AddDbContext<Cinephiliacs_AdmintoolsContext>(options =>
-
             {
                 options.UseSqlServer(myConnString);
             });
 
             services.AddScoped<AdminRepository>();
             services.AddScoped<ReportingLogic>();
+            services.AddScoped<TicketLogic>();
             services.AddScoped<Mapper>();
             // services.AddScoped<>();
 

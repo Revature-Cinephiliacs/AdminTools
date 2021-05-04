@@ -5,14 +5,9 @@ using System.Collections.Generic;
 
 namespace Repository.Models
 {
-
-        /// <summary>
-        /// Tickets models.
-        /// Models for tickets added to database for reports
-        /// </summary>
     public partial class Ticket
     {
-        public int TicketId { get; set; }
+        public string TicketId { get; set; }
         public string ItemId { get; set; }
         public string AffectedService { get; set; }
         public string Descript { get; set; }
