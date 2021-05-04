@@ -40,10 +40,9 @@ namespace AdminToolsTests
                 ReportingLogic logic = new ReportingLogic(repo, new Mapper());
                 ReportModel model = new ReportModel()
                 {
-                    ReportEntityType = ReportType.Review,
+                    ReportEntityType = "Review",
                     ReportEnitityId = userID,
                     ReportDescription = description,
-                    ReportTime = time
                 };
                 bool success = await logic.CreateReportTicket(model);
             }
@@ -51,7 +50,16 @@ namespace AdminToolsTests
             using (var context1 = new Cinephiliacs_AdmintoolsContext(options))
             {
                 context1.Database.EnsureCreated();
-                var ticket = context1.Tickets.Where(t => t.ItemId == userID && t.Descript == description && t.TimeSubmitted == time).FirstOrDefault();
+                var tickets = context1.Tickets.ToList();
+                tickets.ForEach(t =>
+                {
+                    System.Console.WriteLine(t.ItemId);
+                    System.Console.WriteLine(t.AffectedService);
+                    System.Console.WriteLine(t.Descript);
+                    System.Console.WriteLine(t.TimeSubmitted);
+                    System.Console.WriteLine(t.TicketId);
+                });
+                var ticket = context1.Tickets.Where(t => t.ItemId == userID && t.Descript == description).FirstOrDefault();
                 Assert.NotNull(ticket);
             }
         }
@@ -109,7 +117,7 @@ namespace AdminToolsTests
             ticket.Item = "Dynamical";
             Assert.True(ticket.TicketId != 0 && ticket.ItemId != null && ticket.AffectedService != null && ticket.Descript != null && ticket.TimeSubmitted != null && ticket.Item != null);
         }
-        
+
         [Fact]
         public void TestMapperGetReportModel1()
         {

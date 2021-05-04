@@ -15,11 +15,10 @@ namespace AdminToolsLogic.LogicHelper
         {
             return new Ticket()
             {
-                TicketId = model.ReportId,
                 AffectedService = model.ReportEntityType.ToString(),
                 Descript = model.ReportDescription,
                 ItemId = model.ReportEnitityId,
-                TimeSubmitted = model.ReportTime == DateTime.MinValue ? DateTime.Now : model.ReportTime
+                TimeSubmitted = DateTime.Now
             };
         }
 
@@ -36,7 +35,7 @@ namespace AdminToolsLogic.LogicHelper
                 ReportEnitityId = ticket.ItemId,
                 ReportTime = ticket.TimeSubmitted ?? DateTime.MinValue,
                 ReportDescription = ticket.Descript,
-                ReportEntityType = _getReportTypeEnum(ticket.AffectedService),
+                ReportEntityType = ticket.AffectedService,
             };
         }
 
