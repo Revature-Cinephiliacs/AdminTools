@@ -29,7 +29,7 @@ namespace AdminToolsTests
             DateTime time = DateTime.Now;
             ReportModel model = new ReportModel()
             {
-                ReportEntityType = ReportType.Review,
+                ReportEntityType = "Review",
                 ReportEnitityId = userID,
                 ReportDescription = description,
                 ReportTime = time
