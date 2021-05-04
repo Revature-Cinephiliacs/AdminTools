@@ -1,13 +1,17 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using Xunit;
+using System.Text.Json;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using Repository;
 using Repository.Models;
 using Microsoft.EntityFrameworkCore;
 using AdminToolsLogic.Logic;
 using AdminToolsLogic.LogicHelper;
 using AdminToolsModels.LogicModels;
+using RestSharp;
+using Xunit;
 
 namespace AdminToolsTests
 {
@@ -72,6 +76,94 @@ namespace AdminToolsTests
             }
 
             Assert.True(allTickets.Count > 0);
+        }
+
+        [Fact]
+        public void TestSendrequest()
+        {
+            RequestHandler requesthandler = new RequestHandler();
+            Assert.True(requesthandler.Sendrequest(ReportType.Review, "", Method.POST, "") != null);
+        }
+
+        [Fact]
+        public void TestTicketModel()
+        {
+            Ticket ticket = new Ticket();
+            ticket.TicketId = 1;
+            ticket.ItemId = "1";
+            ticket.AffectedService = "This One";
+            ticket.Descript = "All of life is but a test.";
+            ticket.TimeSubmitted = DateTime.Now;
+            Assert.True(ticket.TicketId != 0 && ticket.ItemId != null && ticket.AffectedService != null && ticket.Descript != null && ticket.TimeSubmitted != null);
+        }
+
+        [Fact]
+        public void TestTicketItem()
+        {
+            TicketItem ticket = new TicketItem();
+            ticket.TicketId = 1;
+            ticket.ItemId = "1";
+            ticket.AffectedService = "This One";
+            ticket.Descript = "All of life is but a test.";
+            ticket.TimeSubmitted = DateTime.Now;
+            ticket.Item = "Dynamical";
+            Assert.True(ticket.TicketId != 0 && ticket.ItemId != null && ticket.AffectedService != null && ticket.Descript != null && ticket.TimeSubmitted != null && ticket.Item != null);
+        }
+        
+        [Fact]
+        public void TestMapperGetReportModel1()
+        {
+            Ticket ticket = new Ticket();
+            ticket.TicketId = 1;
+            ticket.ItemId = "1";
+            ticket.AffectedService = "Discussion";
+            ticket.Descript = "All of life is but a test.";
+            ticket.TimeSubmitted = DateTime.Now;
+            Mapper mapper = new Mapper();
+            ReportModel model = mapper.GetReportModel(ticket);
+            Assert.True(model.ReportId != null && model.ReportEnitityId != null && model.ReportTime != null && model.ReportDescription != null && model.ReportEntityType != null);
+        }
+
+        [Fact]
+        public void TestMapperGetReportModel2()
+        {
+            Ticket ticket = new Ticket();
+            ticket.TicketId = 1;
+            ticket.ItemId = "1";
+            ticket.AffectedService = "Review";
+            ticket.Descript = "All of life is but a test.";
+            ticket.TimeSubmitted = DateTime.Now;
+            Mapper mapper = new Mapper();
+            ReportModel model = mapper.GetReportModel(ticket);
+            Assert.True(model.ReportId != null && model.ReportEnitityId != null && model.ReportTime != null && model.ReportDescription != null && model.ReportEntityType != null);
+        }
+
+        [Fact]
+        public void TestMapperGetReportModel3()
+        {
+            Ticket ticket = new Ticket();
+            ticket.TicketId = 1;
+            ticket.ItemId = "1";
+            ticket.AffectedService = "Comment";
+            ticket.Descript = "All of life is but a test.";
+            ticket.TimeSubmitted = DateTime.Now;
+            Mapper mapper = new Mapper();
+            ReportModel model = mapper.GetReportModel(ticket);
+            Assert.True(model.ReportId != null && model.ReportEnitityId != null && model.ReportTime != null && model.ReportDescription != null && model.ReportEntityType != null);
+        }
+
+        [Fact]
+        public void TestMapperGetReportModel4()
+        {
+            Ticket ticket = new Ticket();
+            ticket.TicketId = 1;
+            ticket.ItemId = "1";
+            ticket.AffectedService = "Default";
+            ticket.Descript = "All of life is but a test.";
+            ticket.TimeSubmitted = DateTime.Now;
+            Mapper mapper = new Mapper();
+            ReportModel model = mapper.GetReportModel(ticket);
+            Assert.True(model.ReportId != null && model.ReportEnitityId != null && model.ReportTime != null && model.ReportDescription != null && model.ReportEntityType != null);
         }
     }
 }
