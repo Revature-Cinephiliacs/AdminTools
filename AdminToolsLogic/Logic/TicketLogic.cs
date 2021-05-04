@@ -64,19 +64,16 @@ namespace AdminToolsLogic.Logic
             List<dynamic> reportedReviews = new List<dynamic>();
 
             var discReport = (await handler.Sendrequest(ReportType.Discussion, "forum/discussion/reports", Method.POST, token, discussionTickets.Select(t => t.ItemId).ToList())).Content;
-            System.Console.WriteLine("------" + discReport);
             if(!string.IsNullOrWhiteSpace(discReport))
             {
                 reportedDiscussions = JsonSerializer.Deserialize<List<dynamic>>(discReport);
             }
             var commentReport = (await handler.Sendrequest(ReportType.Comment, "forum/comment/reports", Method.POST, token, commentTickets.Select(t => t.ItemId).ToList())).Content;
-            System.Console.WriteLine("------" + commentReport);
             if(!string.IsNullOrWhiteSpace(commentReport))
             {
                 reportedComments = JsonSerializer.Deserialize<List<dynamic>>(commentReport);
             }
             var reviewReport = (await handler.Sendrequest(ReportType.Review, "reportedReviews", Method.POST, token, reviewTickets.Select(t => t.ItemId).ToList())).Content;
-            System.Console.WriteLine("------" + reviewReport);
             if(!string.IsNullOrWhiteSpace(reviewReport))
             {
                 reportedReviews = JsonSerializer.Deserialize<List<dynamic>>(reviewReport);
