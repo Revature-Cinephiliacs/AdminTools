@@ -26,7 +26,7 @@ namespace AdminToolAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        //[Authorize("manage:awebsite")]
+        [Authorize("manage:awebsite")]
         public async Task<ActionResult<string>> GenerateReportTicket([FromBody] ReportModel model)
         {
             if (await _reportLogic.CreateReportTicket(model))
@@ -42,10 +42,10 @@ namespace AdminToolAPI.Controllers
         /// <param name="archiveId"></param>
         /// <returns></returns>
         [HttpPost("archive")]
-        //[Authorize("manage:awebsite")]
+        [Authorize("manage:awebsite")]
         public async Task<ActionResult<bool>> ArchiveReport([FromBody] string archiveId)
         {
-            if  (await _reportLogic.MoveReportToArchive(archiveId))
+            if (await _reportLogic.MoveReportToArchive(archiveId))
             {
                 return Ok(new { response = "success" });
             }
