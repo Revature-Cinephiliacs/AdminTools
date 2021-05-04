@@ -8,7 +8,7 @@ using RestSharp;
 
 namespace AdminToolsLogic.LogicHelper
 {
-    class RequestHandler
+    public class RequestHandler
     {
         Dictionary<ReportType, string> apiUrls;
         public RequestHandler()
