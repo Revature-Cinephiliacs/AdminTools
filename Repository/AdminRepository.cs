@@ -43,7 +43,7 @@ namespace Repository
         /// <returns></returns>
         public async Task<Ticket> GetTicketById(string id)
         {
-            var ticket = await _context.Tickets.Where(t => t.TicketId == int.Parse(id)).FirstOrDefaultAsync();
+            var ticket = await _context.Tickets.Where(t => t.TicketId == id).FirstOrDefaultAsync();
             return ticket;
         }
 

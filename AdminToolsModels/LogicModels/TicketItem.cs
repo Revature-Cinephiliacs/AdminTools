@@ -4,7 +4,7 @@ namespace AdminToolsModels.LogicModels
 {
     public class TicketItem
     {
-        public int TicketId { get; set; }
+        public string TicketId { get; set; }
         public string ItemId { get; set; }
         public string AffectedService { get; set; }
         public string Descript { get; set; }

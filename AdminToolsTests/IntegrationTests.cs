@@ -29,6 +29,7 @@ namespace AdminToolsTests
             DateTime time = DateTime.Now;
             ReportModel model = new ReportModel()
             {
+                ReportId = Guid.NewGuid().ToString(),
                 ReportEntityType = "Review",
                 ReportEnitityId = userID,
                 ReportDescription = description,
