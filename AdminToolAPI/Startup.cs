@@ -41,8 +41,8 @@ namespace AdminToolAPI
                 options.AddPolicy(name: corsRule,
                     builder => builder
                     .WithOrigins(
-                        "http://20.94.137.143", // deployed angular frontend
                         "http://localhost:4200", // for testing
+                        "http://20.94.137.143", // deployed angular frontend
                         "https://cinephiliacsapp.azurewebsites.net", // deployed frontend
                         "https://cinephiliacs.org" // deployed frontend
                     )
