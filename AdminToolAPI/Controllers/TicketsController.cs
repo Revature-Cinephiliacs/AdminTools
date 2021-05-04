@@ -27,7 +27,7 @@ namespace AdminToolAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        //[Authorize("manage:awebsite")]
+        [Authorize("manage:awebsite")]
         public async Task<ActionResult<List<TicketItem>>> GetAllTickets()
         {
             var token = Helpers.Helper.GetTokenFromRequest(this.Request);
