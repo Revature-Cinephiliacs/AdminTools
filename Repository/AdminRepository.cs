@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using AdminToolsModels.LogicModels;
 using Repository.Models;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Repository
 {
@@ -30,7 +31,8 @@ namespace Repository
         /// Read all tickets and return as list
         /// </summary>
         /// <returns></returns>
-        public List<Ticket> GetAllTickets() {
+        public List<Ticket> GetAllTickets()
+        {
             return _context.Tickets.ToList();
         }
 
@@ -39,11 +41,10 @@ namespace Repository
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Ticket GetTicketById(string id) 
+        public async Task<Ticket> GetTicketById(string id)
         {
-            var ticket = _context.Tickets.Where(t=>t.TicketId == int.Parse(id)).FirstOrDefault();
+            var ticket = await _context.Tickets.Where(t => t.TicketId == int.Parse(id)).FirstOrDefaultAsync();
             return ticket;
-            
         }
 
         /// <summary>
@@ -53,7 +54,7 @@ namespace Repository
         /// Adds the resolved ticket to the resolved-ticket database.
         /// </summary>
         /// <param name="ticket"></param>
-        public void ArchiveTicket(Ticket ticket)
+        public async Task ArchiveTicket(Ticket ticket)
         {
             _context.Tickets.Remove(ticket);
             ResolvedTicket archiveTicket = new ResolvedTicket();
@@ -63,6 +64,7 @@ namespace Repository
             archiveTicket.Descript = ticket.Descript;
             archiveTicket.TimeSubmitted = ticket.TimeSubmitted;
             _context.ResolvedTickets.Add(archiveTicket);
+            await _context.SaveChangesAsync();
         }
 
     }

@@ -37,11 +37,14 @@ namespace AdminToolsLogic.Logic
         public async Task<bool> MoveReportToArchive(string archiveId)
         {
             Ticket ticketToArchive = new Ticket();
-            ticketToArchive = _repo.GetTicketById(archiveId);
-            if(ticketToArchive != null){
-                _repo.ArchiveTicket(ticketToArchive);
+            ticketToArchive = await _repo.GetTicketById(archiveId);
+            if (ticketToArchive != null)
+            {
+                await _repo.ArchiveTicket(ticketToArchive);
                 return true;
-            }else{
+            }
+            else
+            {
                 return false;
             }
         }
