@@ -41,9 +41,9 @@ namespace AdminToolAPI.Controllers
         /// </summary>
         /// <param name="archiveId"></param>
         /// <returns></returns>
-        [HttpPost("archive")]
+        [HttpPost("archive/{archiveId}")]
         [Authorize("manage:awebsite")]
-        public async Task<ActionResult<bool>> ArchiveReport([FromBody] string archiveId)
+        public async Task<ActionResult<bool>> ArchiveReport(string archiveId)
         {
             if (await _reportLogic.MoveReportToArchive(archiveId))
             {
