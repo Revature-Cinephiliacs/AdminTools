@@ -63,6 +63,7 @@ stages:
           scannerMode: 'MSBuild'
           projectKey: 'Revature-Cinephiliacs_AdminTools'
           projectName: 'AdminTools'
+
           extraProperties: |
             sonar.exclusions=/obj/,/lib/,/*.dll,/AuthenticationHelpers/**,/Controllers/**,/Migrations/**
             sonar.cs.opencover.reportsPaths=$(Agent.TempDirectory)/*/coverage.opencover.xml
