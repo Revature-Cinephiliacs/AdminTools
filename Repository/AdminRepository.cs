@@ -41,10 +41,11 @@ namespace Repository
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<Ticket> GetTicketById(string id)
+        public async Task<List<Ticket>> GetTicketById(string id)
         {
             var ticket = await _context.Tickets.Where(t => t.TicketId == id).FirstOrDefaultAsync();
-            return ticket;
+            var tickets = await _context.Tickets.Where(t => t.ItemId == ticket.ItemId).ToListAsync();
+            return tickets;
         }
 
         /// <summary>
@@ -54,17 +55,20 @@ namespace Repository
         /// Adds the resolved ticket to the resolved-ticket database.
         /// </summary>
         /// <param name="ticket"></param>
-        public async Task ArchiveTicket(Ticket ticket)
+        public void ArchiveTicket(List<Ticket> tickets)
         {
-            _context.Tickets.Remove(ticket);
-            ResolvedTicket archiveTicket = new ResolvedTicket();
-            archiveTicket.TicketId = ticket.TicketId;
-            archiveTicket.ItemId = ticket.ItemId;
-            archiveTicket.AffectedService = ticket.AffectedService;
-            archiveTicket.Descript = ticket.Descript;
-            archiveTicket.TimeSubmitted = ticket.TimeSubmitted;
-            _context.ResolvedTickets.Add(archiveTicket);
-            await _context.SaveChangesAsync();
+            tickets.ForEach(ticket =>
+            {
+                _context.Tickets.Remove(ticket);
+                ResolvedTicket archiveTicket = new ResolvedTicket();
+                archiveTicket.TicketId = ticket.TicketId;
+                archiveTicket.ItemId = ticket.ItemId;
+                archiveTicket.AffectedService = ticket.AffectedService;
+                archiveTicket.Descript = ticket.Descript;
+                archiveTicket.TimeSubmitted = ticket.TimeSubmitted;
+                _context.ResolvedTickets.Add(archiveTicket);
+                _context.SaveChanges();
+            });
         }
 
     }
