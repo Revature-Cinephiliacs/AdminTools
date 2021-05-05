@@ -65,7 +65,7 @@ stages:
           projectName: 'AdminTools'
 
           extraProperties: |
-            sonar.exclusions=/obj/,/lib/,/*.dll,/AuthenticationHelpers/**,/Controllers/**,/Migrations/**
+            sonar.exclusions=/obj/,/lib/,/*.dll,/AdminToolAPI/**,/Migrations/**
             sonar.cs.opencover.reportsPaths=$(Agent.TempDirectory)/*/coverage.opencover.xml
 
       - task: DotNetCoreCLI@2
