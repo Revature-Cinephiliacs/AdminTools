@@ -26,7 +26,6 @@ namespace AdminToolAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        // [Authorize("manage:awebsite")]
         public async Task<ActionResult<string>> GenerateReportTicket([FromBody] ReportModel model)
         {
             if (await _reportLogic.CreateReportTicket(model))
